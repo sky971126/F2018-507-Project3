@@ -116,6 +116,8 @@ def process_command(command):
     use_seller = 1
     use_top = 1
     limit = 10
+    if command == "":
+        return None
     if commands[0] == "bars":
         for i in commands[1:]:
             if i.startswith("sellcountry"):
@@ -247,7 +249,6 @@ def process_command(command):
             statement += " ASC"
         else:
             statement += " DESC"
-        print(statement)
         result = cur.execute(statement).fetchmany(limit)
 
     elif commands[0] == "countries":
@@ -413,7 +414,6 @@ def process_command(command):
             statement += " ASC"
         else:
             statement += " DESC"
-        print(statement)
         result = cur.execute(statement).fetchmany(limit)
     else:
         print("Command not recognized: " + command)
